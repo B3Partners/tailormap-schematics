@@ -1,0 +1,24 @@
+{
+  "name": "@tailormap-viewer/schematics",
+  "version": "0.0.2",
+  "description": "Schematics for use in the Tailormap Viewer project",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "release-new-package": "npm run build && npm version patch && npm publish --scope=@tailormap-viewer --registry=https://repo.b3p.nl/nexus/repository/npm-public"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^13.0.4",
+    "@angular-devkit/schematics": "^13.1.0",
+    "@schematics/angular": "^13.1.0",
+    "typescript": "~4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.1"
+  }
+}
