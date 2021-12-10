@@ -49,7 +49,7 @@ export const component = (options: TailormapComponentOptions): Rule => {
       ? defaultModuleDetails
       : getModuleDetails(options, host);
 
-    const specFileTemplateSource = apply(url('./files'), [
+    const specFileTemplateSource = apply(url('./files/component'), [
       template({
         ...strings,
         'if-flat': (s: string) => (options.flat ? '' : s), // create component folder or not

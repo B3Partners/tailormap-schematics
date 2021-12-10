@@ -7,6 +7,12 @@
       "factory": "./tailormap-schematics/component#component",
       "schema": "./tailormap-schematics/component-schema.json",
       "aliases": ["c"]
+    },
+    "service": {
+      "description": "Creates service and Spectator spec file",
+      "factory": "./tailormap-schematics/service#service",
+      "schema": "./tailormap-schematics/service-schema.json",
+      "aliases": ["s"]
     }
   }
 }
