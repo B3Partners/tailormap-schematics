@@ -1,0 +1,12 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "extends": ["@schematics/angular"],
+  "schematics": {
+    "component": {
+      "description": "Creates component and Angular Testing library spec file",
+      "factory": "./tailormap-schematics/component#component",
+      "schema": "./tailormap-schematics/component-schema.json",
+      "aliases": ["c"]
+    }
+  }
+}
