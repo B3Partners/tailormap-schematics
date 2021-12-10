@@ -11,6 +11,6 @@ runCommand('npm', ['version', 'patch', '--git-tag-version=false'])
     .then(() => runCommand('npm', ['publish', '--scope=@tailormap-viewer', '--registry=https://repo.b3p.nl/nexus/repository/npm-public'], path.resolve(__dirname, '../dist/')))
     .then(() => runCommand('git', ['add', '-A']))
     .then(() => {
-        const currentVersion = require(path.resolve(__dirname, 'package.json')).version
+        const currentVersion = require(path.resolve(__dirname, '../package.json')).version
         return runCommand('git', ['commit', '-m', `Released version ${currentVersion}`]);
     });
