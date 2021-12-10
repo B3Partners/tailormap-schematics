@@ -15,40 +15,41 @@ import { Schema } from '@schematics/angular/service/schema';
 import { getWorkspace, buildDefaultPath } from '@schematics/angular/utility/workspace';
 import { parseName } from '@schematics/angular/utility/parse-name';
 
-type TailormapServiceOptions = Schema & { httpService: boolean };
+type TailormapServiceOptions = Schema & { httpService?: boolean };
 
 export const service = (options: TailormapServiceOptions): Rule => {
   return async (host: Tree) => {
-    const { httpService, ..._options } = options;
-    if (_options.skipTests) {
-      return externalSchematic('@schematics/angular', 'service', _options);
+    if (options.skipTests) {
+      delete options.httpService;
+      return externalSchematic('@schematics/angular', 'service', options);
     }
 
     const workspace = await getWorkspace(host);
-    const project = workspace.projects.get(_options.project as string);
+    const project = workspace.projects.get(options.project as string);
 
-    if (_options.path === undefined && project) {
-      _options.path = buildDefaultPath(project);
+    if (options.path === undefined && project) {
+      options.path = buildDefaultPath(project);
     }
 
-    const parsedPath = parseName(_options.path as string, _options.name);
-    _options.name = parsedPath.name;
-    _options.path = parsedPath.path;
+    const parsedPath = parseName(options.path as string, options.name);
+    options.name = parsedPath.name;
+    options.path = parsedPath.path;
 
     const specFileTemplateSource = apply(url('./files/service'), [
       template({
         ...strings,
-        'if-flat': (s: string) => (_options.flat ? '' : s), // create service folder or not
-        ...{ _options, httpService },
+        'if-flat': (s: string) => (options.flat ? '' : s), // create service folder or not
+        ...options,
       }),
       move(parsedPath.path),
     ]);
 
     const angularServiceOptions = {
-      ..._options,
+      ...options,
       ...getAngularServiceExtensions(workspace.extensions),
       ...getAngularServiceExtensions(project?.extensions),
     };
+    delete angularServiceOptions.httpService;
 
     return chain([
       externalSchematic('@schematics/angular', 'service', {
