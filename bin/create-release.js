@@ -3,7 +3,7 @@ const { runCommand, checkCleanGitRepo } = require("./shared");
 
 checkCleanGitRepo();
 
-runCommand('npm', ['version', 'patch'])
+runCommand('npm', ['version', 'patch', '--git-tag-version=false'])
     .then(() => runCommand('npm', ['run', 'build']))
     .then(() => runCommand('mkdir', ['-p', 'dist' ]))
     .then(() => runCommand('cp', ['-r', 'src', 'dist/']))
