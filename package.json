@@ -4,7 +4,7 @@
   "description": "Schematics for use in the Tailormap Viewer project",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "release-new-package": "npm run build && npm version patch && npm publish --scope=@tailormap-viewer --registry=https://repo.b3p.nl/nexus/repository/npm-public"
+    "release-new-package": "node bin/create-release.js"
   },
   "keywords": [
     "schematics"
