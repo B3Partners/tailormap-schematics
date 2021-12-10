@@ -12,5 +12,6 @@ runCommand('npm', ['version', 'patch', '--git-tag-version=false'])
     .then(() => runCommand('git', ['add', '-A']))
     .then(() => {
         const currentVersion = require(path.resolve(__dirname, '../package.json')).version
-        return runCommand('git', ['commit', '-m', `Released version ${currentVersion}`]);
-    });
+        return runCommand('git', ['commit', '-m', `Released version ${currentVersion}`])
+            .then(() => runCommand('git', ['tag', `v${currentVersion}`]));
+    })
