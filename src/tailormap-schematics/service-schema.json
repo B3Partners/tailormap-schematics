@@ -42,8 +42,7 @@
     "httpService": {
       "type": "boolean",
       "description": "Create service with HttpClient",
-      "default": false,
-      "x-user-analytics": 12
+      "default": false
     }
   },
   "required": ["name"]
