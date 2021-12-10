@@ -12,10 +12,6 @@ Check the documentation with
 schematics --help
 ```
 
-### Unit Testing
-
-`npm run test` will run the unit tests, using Jasmine as a runner and test framework.
-
 ### Publishing
 
 To publish, simply do:
