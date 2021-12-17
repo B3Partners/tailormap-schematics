@@ -1,4 +1,3 @@
-
 import { Component, OnInit<% if(!!viewEncapsulation) { %>, ViewEncapsulation<% }%><% if(changeDetection !== 'Default') { %>, ChangeDetectionStrategy<% }%> } from '@angular/core';
 
 @Component({<% if(!skipSelector) {%>
