@@ -1,6 +1,6 @@
 {
   "name": "@tailormap-viewer/schematics",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Schematics for use in the Tailormap Viewer project",
   "scripts": {
     "build": "tsc -p tsconfig.json",
