@@ -13,6 +13,11 @@
       "factory": "./tailormap-schematics/service#service",
       "schema": "./tailormap-schematics/service-schema.json",
       "aliases": ["s"]
+    },
+    "state": {
+      "description": "Creates state related files (reducer, state, actions, selectors)",
+      "factory": "./tailormap-schematics/state#state",
+      "schema": "./tailormap-schematics/state-schema.json"
     }
   }
 }

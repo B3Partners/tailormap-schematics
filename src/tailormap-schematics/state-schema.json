@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "SchematicsNgRxState",
+  "title": "NgRx State Options Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "Creates state related files (reducer, state, actions, selectors) in the given or default project.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the state.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for the state?"
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path at which to create the service, relative to the workspace root.",
+      "visible": false
+    },
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "flat": {
+      "type": "boolean",
+      "default": true,
+      "description": "When true (the default), creates files at the top level of the project."
+    },
+    "skipTests": {
+      "type": "boolean",
+      "description": "Do not create \"spec.ts\" test files for the new service.",
+      "default": false,
+      "x-user-analytics": 12
+    }
+  },
+  "required": ["name"]
+}
