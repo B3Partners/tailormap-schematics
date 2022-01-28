@@ -6,17 +6,17 @@ import { concatMap, map, of } from 'rxjs';
 @Injectable()
 export class <%= classify(name) %>Effects {
 
-    // public setSomeProp$ = createEffect(() => {
-    //     return this.actions$.pipe(
-    //         ofType(<%= classify(name) %>Actions.setSomeProp),
-    //         concatMap(action => {
-    //
-    //         }),
-    //     );
-    // });
+  // public setSomeProp$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(<%= classify(name) %>Actions.setSomeProp),
+  //     concatMap(action => {
+  //
+  //     }),
+  //   );
+  // });
 
-    constructor(
-        private actions$: Actions,
-    ) {}
+  constructor(
+    private actions$: Actions,
+  ) {}
 
 }
