@@ -1,25 +1,38 @@
-<% if(!httpService) {%>import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';<% } else { %>import { createHttpFactory, HttpMethod, SpectatorHttp } from '@ngneat/spectator/jest';<% } %>
+<% if(httpService) {%>import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';<% } %>
+import { TestBed } from '@angular/core/testing';
 import { <%= classify(name)%>Service } from './<%= dasherize(name)%>.service';
 
 describe('<%= classify(name)%>Service', () => {
 <% if(!httpService) {%>
-  let spectator: SpectatorService<<%= classify(name)%>Service>;
-  const createService = createServiceFactory(<%= classify(name)%>Service);
+  let service: <%= classify(name)%>Service;
 
-  beforeEach(() => spectator = createService());
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [ <%= classify(name)%>Service ],
+    });
+    service = TestBed.inject(<%= classify(name)%>Service);
+  });
 
   test('should...', () => {
-    expect(spectator.service).toBeTruthy();
+    expect(service).toBeTruthy();
   });
 <% } else { %>
-  let spectator: SpectatorHttp<<%= classify(name)%>Service>;
-  const createHttp = createHttpFactory(<%= classify(name)%>Service);
+  let service: <%= classify(name)%>Service;
+  let httpController: HttpTestingController;
 
-  beforeEach(() => spectator = createHttp());
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
+      providers: [ <%= classify(name)%>Service ],
+    });
+    service = TestBed.inject(<%= classify(name)%>Service);
+    httpController = TestBed.inject(HttpTestingController);
+  });
 
   test('can test HttpClient.get', () => {
-    // spectator.service.getTodos().subscribe();
-    // spectator.expectOne('api/todos', HttpMethod.GET);
+    // service.getTodos().subscribe();
+    // const req = httpController.expectOne({ url: 'api/todos', method: 'GET' });
+    // req.flush(null);
   });
 <% } %>
 });
