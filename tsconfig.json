@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": "tsconfig",
-    "lib": ["es2020", "dom"],
+    "lib": ["es2018", "dom"],
     "declaration": true,
-    "module": "es2020",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
@@ -16,7 +16,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "es2020",
+    "target": "es6",
     "types": ["node"]
   },
   "include": ["src/**/*"],
